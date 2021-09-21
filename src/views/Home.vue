@@ -1,25 +1,25 @@
 <template>
-  <v-app>
-    <v-app-bar app color="#105bd8" dark>
-      <v-img class="shrink mr-2" contain 
-        src="https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png" 
-        transition="scale-transition"
-        width="100"
-      />      
-      <v-toolbar-title>Spacetagram</v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-app-bar>
-    <router-view/>
-  </v-app> 
+    <v-main>
+      <v-card class="mx-auto my-3" :loading="loading" max-width="50vw">
+          <v-skeleton-loader v-show="showSkeleton" type="card-avatar, article" ></v-skeleton-loader>
+          <template slot="progress">
+            <v-progress-linear color="#0b3d91" height="5" indeterminate></v-progress-linear>
+          </template>
+      </v-card>
+
+      <div v-for="data in cardData" :key="data.date">
+        <Card v-bind="data" :loading="loading"/>
+      </div>
+    </v-main>
 </template>
 
 <script>
-// import Card from './components/Card.vue'
+import Card from '../components/Card.vue'
 
 export default {
   name: 'App',
   components: {
-    // Card
+    Card
   },
   data() {
     return {
@@ -85,8 +85,5 @@ export default {
 };
 </script>
 
-<style>
-  html {
-    font-family: Helvetica, "Source Sans Pro", Merriweather;
-  }
+<style scoped>
 </style>
