@@ -13,18 +13,18 @@
         </v-btn>
         {{title}}
         <v-spacer></v-spacer>
-        <v-btn icon color="#0b3d91" @click="share">
+        <v-btn icon color="#0b3d91" @click="share" v-if="shareBtn">
             <v-icon>mdi-share</v-icon>
+            <v-snackbar v-model="snackbar" timeout="2000">
+                Link Copied! 
+                <template v-slot:action="{ attrs }">
+                    <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+                        Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
         </v-btn>
 
-        <v-snackbar v-model="snackbar" timeout="2000">
-            Link Copied! 
-            <template v-slot:action="{ attrs }">
-                <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-                    Close
-                </v-btn>
-            </template>
-        </v-snackbar>
     </v-card-title>
     
     <v-card-subtitle class="mt-auto">{{date}}</v-card-subtitle>
@@ -39,7 +39,7 @@ export default {
         return {
             showSkeleton: true,
             liked: false,
-            snackbar: false
+            snackbar: false,
         }
     },
     props: [ 'date', 'title', 'url', 'explanation', 'loading'],
@@ -74,6 +74,9 @@ export default {
         },
         link() {
             return `${window.location.href}shared?date=${this.date}`
+        },
+        shareBtn() {
+            return !(this.$route.name == "Shared")
         }
     },
     methods: {
