@@ -65,10 +65,10 @@ export default {
         // eslint-disable-next-line vue/return-in-computed-property
         maxWidth() {
             switch (this.$vuetify.breakpoint.name) {
-                case 'xs': return "75vw"
-                case 'sm': return "60vw"
+                case 'xs': return "90vw"
+                case 'sm': return "75vw"
                 case 'md': return "50vw"
-                case 'lg': return "40vw"
+                case 'lg': return "45vw"
                 case 'xl': return "40vw"
             }
         },
