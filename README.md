@@ -1,4 +1,5 @@
 # spacetagram
+Hosted on https://spacetagram-manan.netlify.app/
 
 ## Project setup
 ```
