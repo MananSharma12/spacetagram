@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Some features of the app
+1. Like and Unlike a Post
+2. Create Shareable Link
+3. Infinite Scroll!
